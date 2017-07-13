@@ -1,0 +1,53 @@
+template(name='docs')
+    .ui.segment
+        div
+            if currentUser
+                .ui.icon.input
+                    // i.plus.icon
+                    input#quick_add(type='text' placeholder='quick add')
+                    i.lightning.icon
+        +tag_cloud
+    .ui.stackable.centered.cards
+        each docs
+            if one_doc
+                .ui.card
+                    +view
+
+
+
+
+template(name='view')
+    if youtube
+        +view_youtube
+    if image_id
+        .image
+            img(src="{{c.url image_id}}")
+    if image_url
+        .image
+            img(src=image_url)
+    .content
+        span.right.floated 
+            .expand_card.ui.basic.icon.button
+                i.expand.icon
+        .description
+            |!{content}
+        .meta
+            i.tags.icon
+            each tags
+                .ui.button.tag(class=tag_class) #{this}
+        // if price
+        //     .ui.header price $#{price}
+        // if number
+        //     .ui.header number ##{number}
+        // if start_datetime
+        //     .ui.sub.header #{day} 
+        //     .ui.sub.header #{start_time} to #{end_time}
+        if currentUser
+            a.clone.ui.icon.button
+                i.fork.icon
+        if is_author
+            a.ui.icon.button(href="/edit/#{_id}")
+                i.pencil.icon
+        // | by #{author.username} #{when}
+        | #{when}
+        // +both_voter

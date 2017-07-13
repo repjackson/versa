@@ -1,0 +1,39 @@
+template(name='tag_cloud')            
+    // .ui.header tag
+    .ui.left.icon.input
+        i.search.icon
+        +inputAutocomplete settings=settings id="search" class="" autofocus='' autocomplete="off"
+    if selected_tags
+        #clear_tags.ui.active.compact.big.icon.button
+            i.remove.icon
+    if selected_tags
+        each selected_tags
+            a.ui.active.compact.big.button.unselect_tag
+                strong #{this}
+    each all_tags
+        // .ui.compact.animated.fade.button.select_tag(class=tag_cloud_class)
+        //     .visible.content
+        //         strong #{this.name}
+        //     .hidden.content
+        //         strong #{this.name} 
+        //         small #{this.count}
+        .ui.compact.button.select_tag(class=tag_cloud_class)
+            strong #{this.name} 
+                
+
+
+template(name='number_cloud')  
+    // if all_numbers.
+    .ui.header number
+    if selected_numbers
+        #clear_numbers.ui.active.compact.big.icon.button
+            i.remove.icon
+    if selected_numbers
+        each selected_numbers
+            a.ui.active.compact.big.button.unselect_number
+                strong #{this}
+    each all_numbers
+        // .ui.compact.button.select_tag(class=tag_cloud_class) #{this.name}
+        .ui.button.select_number 
+            strong #{this.name}
+            small #{this.count}

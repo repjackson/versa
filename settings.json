@@ -1,0 +1,10 @@
+{
+  "public": {
+  },
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://versaadmin:v3rs44dm1n!@aws-us-east-1-portal.21.dblayer.com:10444/versadb?ssl=true",
+      "ROOT_URL": "https://www.versa.meteorapp.com"
+    }
+  }
+}

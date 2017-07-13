@@ -1,0 +1,105 @@
+.-autocomplete-container
+    margin-top 12px
+    
+    
+.ui.button
+    margin  .2em !important
+
+body, .ui.header
+    font-family 'Ubuntu', sans-serif
+    // background lightgrey !important
+    background #eeeeee !important
+    // font-size 15px !important
+    // line-height 1.5em
+    // margin-top 5em
+
+#main_area
+    min-height 500px
+    bottom 0
+
+@font-face
+    font-family facet_black
+    src url(/fonts/facet_black.ttf)
+
+@font-face
+    font-family facet_white
+    src url(/fonts/facet_white.ttf)
+
+.facet_white
+    font-size 200% !important
+    font-family facet_white !important
+    
+.facet_black
+    font-size 200% !important
+    font-family facet_black !important
+    
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .mobile.hidden,
+    .tablet.only,
+    .computer.only,
+    .large.monitor.only,
+    .widescreen.monitor.only {
+        display: none !important;
+    }
+}
+
+/* Tablet / iPad Portrait */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mobile.only,
+    .tablet.hidden,
+    .computer.only,
+    .large.monitor.only,
+    .widescreen.monitor.only {
+        display: none !important;
+    }
+}
+
+/* Computer / Desktop / iPad Landscape */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .mobile.only,
+    .tablet.only,
+    .computer.hidden,
+    .large.monitor.only,
+    .widescreen.monitor.only {
+        display: none !important;
+    }
+}
+
+/* Large Monitor */
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+    .mobile.only,
+    .tablet.only,
+    .computer.only,
+    .large.monitor.hidden,
+    .widescreen.monitor.only {
+        display: none !important;
+    }
+}
+
+/* Widescreen Monitor */
+@media only screen and (min-width: 1920px) {
+    .mobile.only,
+    .tablet.only,
+    .computer.only,
+    .large.monitor.only,
+    .widescreen.monitor.hidden  {
+        display: none !important;
+    }
+}    
+
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
