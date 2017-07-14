@@ -1,0 +1,20 @@
+template(name='profile_my_info')
+    .ui.inverted.form
+        .field
+            label Password
+        .field
+            label Email
+        .field
+            label Gender
+    .ui.divider
+    a#logout
+        |Logout
+    span.floated.right
+        a#delete_account
+            |Delete
+            
+            
+            
+template(name='profile_devices')
+    .ui.inverted.secondary.segment
+        .ui.header Saved Devices

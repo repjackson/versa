@@ -32,7 +32,6 @@ momentjs:moment
 kevohagan:sweetalert
 mizzao:autocomplete
 raix:handlebar-helpers
-froala:editor-reactive@=2.4.2
 jquery@1.11.10
 useraccounts:flow-routing
 useraccounts:semantic-ui
@@ -40,5 +39,6 @@ reywood:publish-composite
 kadira:blaze-layout
 kadira:flow-router
 perak:codemirror
-lepozepo:cloudinary
 reactive-var@1.0.11
+zimme:active-route
+dynamic-import

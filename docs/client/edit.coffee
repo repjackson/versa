@@ -11,47 +11,6 @@ Template.edit.onCreated ->
     @autorun => Meteor.subscribe 'doc', FlowRouter.getParam('doc_id')
 
 
-Template.view_youtube.onRendered ->
-    Meteor.setTimeout (->
-        $('.ui.embed').embed()
-    ), 2000
-
-    # Meteor.setTimeout (->
-    #     $('#datetimepicker').datetimepicker(
-    #         onChangeDateTime: (dp,$input)->
-    #             val = $input.val()
-
-    #             # console.log moment(val).format("dddd, MMMM Do YYYY, h:mm:ss a")
-    #             minute = moment(val).minute()
-    #             hour = moment(val).format('h')
-    #             date = moment(val).format('Do')
-    #             ampm = moment(val).format('a')
-    #             weekdaynum = moment(val).isoWeekday()
-    #             weekday = moment().isoWeekday(weekdaynum).format('dddd')
-
-    #             month = moment(val).format('MMMM')
-    #             year = moment(val).format('YYYY')
-
-    #             datearray = [hour, minute, ampm, weekday, month, date, year]
-
-    #             doc_id = FlowRouter.getParam 'doc_id'
-
-    #             doc = Docs.findOne doc_id
-    #             tagsWithoutDate = _.difference(doc.tags, doc.datearray)
-    #             tagsWithNew = _.union(tagsWithoutDate, datearray)
-
-    #             Docs.update doc_id,
-    #                 $set:
-    #                     tags: tagsWithNew
-    #                     datearray: datearray
-    #                     dateTime: val
-    #         )), 2000
-
-    # @autorun ->
-    #     if GoogleMaps.loaded()
-    #         $('#place').geocomplete().bind 'geocode:result', (event, result) ->
-    #             doc_id = Session.get 'editing'
-    #             Meteor.call 'updatelocation', doc_id, result, ->
 
 Template.edit.helpers
     doc: -> 

@@ -18,6 +18,42 @@ Template.registerHelper 'is_editing', () ->
 Template.registerHelper 'is_dev', () -> Meteor.isDevelopment
 
 
-$.cloudinary.config
-    cloud_name:"facet"
-        
+FlowRouter.notFound =
+    action: ->
+        BlazeLayout.render 'layout', 
+            main: 'not_found'
+
+FlowRouter.route '/', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'home'
+
+FlowRouter.route '/climbers', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'climbers'
+
+FlowRouter.route '/about', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'about'
+
+FlowRouter.route '/profile', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'profile'
+
+FlowRouter.route '/profile/my_info', action: (params) ->
+    BlazeLayout.render 'layout',
+        sub_nav: 'profile_nav'
+        main: 'profile_my_info'
+
+FlowRouter.route '/profile/devices', action: (params) ->
+    BlazeLayout.render 'layout',
+        sub_nav: 'profile_nav'
+        main: 'profile_devices'
+
+
+Template.climbers.onCreated ->
+    @autorun -> Meteor.subscribe 'climbers'
+    
+Template.climbers.events
+    'click #add_climber': ->
+        new_climber_id = Climbers.insert {}
+        Session.set 'editing_climber_id', new_climber_id

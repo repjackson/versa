@@ -20,3 +20,6 @@ publishComposite 'doc', (id)->
 
 
     
+    
+Meteor.publish 'climbers', ->
+    Climbers.find()
