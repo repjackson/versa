@@ -35,6 +35,14 @@ FlowRouter.route '/about', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'about'
 
+FlowRouter.route '/recording', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'recording'
+
+FlowRouter.route '/register', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'register'
+
 FlowRouter.route '/profile', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'profile'
@@ -57,3 +65,41 @@ Template.climbers.events
     'click #add_climber': ->
         new_climber_id = Climbers.insert {}
         Session.set 'editing_climber_id', new_climber_id
+        
+    'blur #change_climber_id': ->
+        value = $('#change_climber_id').val()
+        Climbers.update @_id,
+            $set: climber_id: value
+    
+    'click .make_available': ->
+        Climbers.update @_id,
+            $set: available: true
+        
+    'click .remove_available': ->
+        Climbers.update @_id,
+            $set: available: false
+        
+    'click .pair_climber': ->
+        swal {
+            title: "Pairing with #{@climber_id}..."
+            # text: "I will close in 2 seconds.",
+            timer: 2000
+            type: 'info'
+            showConfirmButton: false
+        }
+        Meteor.setTimeout (->
+            Climbers.update @_id,
+                $set: paired: true
+            FlowRouter.go '/recording'
+        ), 2100
+        
+        
+    'click .edit_climber_id': -> Session.set 'editing_climber_id', @_id
+    'click #save_climber_id': -> Session.set 'editing_climber_id', null
+        
+Template.climbers.helpers
+    climbers: -> Climbers.find()
+    available_climbers: -> Climbers.find available: true
+    
+    is_editing_climber_id: ->
+        Session.equals 'editing_climber_id', @_id

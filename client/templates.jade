@@ -42,13 +42,59 @@ template(name='home')
             
             
 template(name='climbers')
-    .ui.dividing.header Climbers
-    .ui.divided.list
+    a.ui.basic.inverted.white.button(href='/')
+        i.left.arrow.icon
+        |Cancel
+    .ui.center.aligned.header Connect Your Versaclimber
+    .ui.center.aligned.basic.segment
+        .ui.medium.image
+            img(src='/versafull.png')
+
+    .ui.dividing.header Available Climbers
+    .ui.divided.inverted.relaxed.list
+        each available_climbers
+            a.item.pair_climber 
+                .content
+                    .header 
+                        h3 #{climber_id}
+    
+    .ui.horizontal.divider.header Admin
+    .ui.dividing.header All Climbers
+    .ui.divided.inverted.list
         each climbers
             .item 
+                .right.floated.content
+                    unless is_editing_climber_id
+                        .edit_climber_id.ui.white.button
+                            i.pencil.icon
+                            |Edit Id
+                        unless available
+                            .make_available.ui.button 
+                                i.check.icon
+                                |Simulate Available
+                        else    
+                            .remove_available.ui.button 
+                                i.remove.icon
+                                |Remove Availability
                 .content
-                    .header #{name}
-    .ui.dividing.header Admin
+                    if is_editing_climber_id
+                        .ui.labeled.inverted.input
+                            .ui.basic.label Climber Id
+                            input#change_climber_id(type='text' value=climber_id)
+                            #save_climber_id.ui.green.icon.button
+                                i.check.icon
+                    else
+                        .header 
+                            h3 #{climber_id}
+                            .description
+                                if paired
+                                    .ui.basic.label Paired
+                                else    
+                                    .ui.basic.label Not Paired
+                                if registered
+                                    .ui.basic.label Registered
+                                else    
+                                    .ui.basic.label Not Registered
     #add_climber.ui.basic.inverted.button
         i.plus.icon
         |Add Climber
@@ -68,9 +114,40 @@ template(name='about')
             a.item(href='www.versaclimber.com')
                 |Store
                 
-template(name='profile_nav')
-    .ui.two.item.inverted.menu
-        a.red.item(href='/profile/my_info' class="{{isActivePath '/profile/my_info'}}")
-            |My Info
-        a.red.item(href='/profile/devices' class="{{isActivePath '/profile/devices'}}")
-            |Devices
+template(name='recording')
+    a.ui.basic.white.inverted.button(href='/climbers')
+        i.left.arrow.icon
+        |Back
+    .ui.center.aligned.header
+        |Recording Page
+        
+        
+template(name='register')
+    a.ui.basic.white.inverted.button(href='/climbers')
+        i.left.arrow.icon
+        |Back
+    .ui.center.aligned.header
+        |Congrats on your new climber!
+    .ui.center.aligned.subheader
+        |Would you like to register it now?
+    .ui.inverted.big.form
+        .field 
+            label Name your climber:
+            input(type='text')
+        .field
+            label Your full name:
+            input(type='text')
+        .field
+            label Company (if any):
+            input(type='text')
+        .field
+            label This climber will be used for:
+            input(type='text')
+        .field
+            label Invite additional admins:
+            input(type='text')
+        .ui.grey.button Cancel
+        .ui.red.button Submit
+        
+        
+    

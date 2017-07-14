@@ -3,7 +3,7 @@
 
 Climbers.before.insert (userId, doc)->
     doc.author_id = Meteor.userId()
-    doc.paired = paired
+    doc.paired = false
     doc.registered = false
     
     return

@@ -1,3 +1,11 @@
+template(name='profile_nav')
+    .ui.two.item.inverted.menu
+        a.red.item(href='/profile/my_info' class="{{isActivePath '/profile/my_info'}}")
+            |My Info
+        a.red.item(href='/profile/devices' class="{{isActivePath '/profile/devices'}}")
+            |Devices
+            
+            
 template(name='profile_my_info')
     .ui.inverted.form
         .field
